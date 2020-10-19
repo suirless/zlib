@@ -80,9 +80,9 @@ endif()
 
 set(ZLIB_PC ${CMAKE_CURRENT_BINARY_DIR}/zlib.pc)
 configure_file( ${CMAKE_CURRENT_SOURCE_DIR}/zlib.pc.cmakein
-		${ZLIB_PC} @ONLY)
-configure_file(	${CMAKE_CURRENT_SOURCE_DIR}/zconf.h.cmakein
-		${CMAKE_CURRENT_BINARY_DIR}/zconf.h @ONLY)
+        ${ZLIB_PC} @ONLY)
+configure_file( ${CMAKE_CURRENT_SOURCE_DIR}/zconf.h.cmakein
+        ${CMAKE_CURRENT_BINARY_DIR}/zconf.h @ONLY)
 include_directories(${CMAKE_CURRENT_BINARY_DIR} ${CMAKE_SOURCE_DIR})
 
 set(ZLIB_PUBLIC_HDRS
@@ -127,7 +127,7 @@ string(REGEX REPLACE ".*#define[ \t]+ZLIB_VERSION[ \t]+\"([-0-9A-Za-z.]+)\".*"
 add_library(zlibstatic STATIC ${ZLIB_SRCS} ${ZLIB_PUBLIC_HDRS} ${ZLIB_PRIVATE_HDRS})
 
 if(NOT CYGWIN)
-    set_target_properties(zlib PROPERTIES VERSION ${ZLIB_FULL_VERSION})
+    set_target_properties(zlibstatic PROPERTIES VERSION ${ZLIB_FULL_VERSION})
 endif()
 
 add_library(zlib ALIAS zlibstatic)
